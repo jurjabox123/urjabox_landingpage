@@ -1,15 +1,18 @@
 <template>
-  <div class="bg-white py-16 px-6 md:px-12">
-    <!-- Partner Logos -->
-    <div class="text-center">
+  <div class="pt-10 pb-20 bg-white">
+    <!-- Partner Logos Marquee -->
+     <div class="text-center mt-5"> 
       <h2 class="text-5xl font-bold mb-8 text-gray-900">A Partner to Market Leaders</h2>
-      <div class="flex flex-wrap justify-center items-center gap-[2.5rem]">
-        <img src="/assets/images/pizzahut.png" alt="Pizza Hut" class="partner-logo" />
-        <img src="/assets/images/mcdonalds.png" alt="McDonald's" class="partner-logo" />
-        <img src="/assets/images/chaayos.png" alt="Chaayos" class="partner-logo" />
-        <img src="/assets/images/fortis.png" alt="Fortis" class="partner-logo" />
-        <img src="/assets/images/burgerclub.png" alt="The Burger Club" class="partner-logo" />
-        <img src="/assets/images/dominos.png" alt="Domino's" class="partner-logo" />
+     </div>
+    <div class="marquee mb-16">
+      <div class="marquee-content" :style="{ animationDuration: duration + 's' }">
+        <div v-for="(logo, index) in logos" :key="index" class="marquee-item">
+          <img :src="logo.src" :alt="logo.alt" class="partner-logo" />
+        </div>
+        <!-- Duplicate for smooth looping -->
+        <div v-for="(logo, index) in logos" :key="'duplicate-' + index" class="marquee-item">
+          <img :src="logo.src" :alt="logo.alt" class="partner-logo" />
+        </div>
       </div>
     </div>
 
@@ -37,11 +40,47 @@
   </div>
 </template>
 
+<script setup>
+import { ref } from 'vue';
+
+const logos = [
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/pizzahut.png', alt: 'Pizza Hut', class: 'logo-pizzahut' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/mcdonalds.png', alt: "McDonald's", class: 'logo-mcdonalds' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/chaayos.png', alt: 'Chaayos', class: 'logo-chaayos' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/fortis.png', alt: 'Fortis', class: 'logo-fortis' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/burgerclub.png', alt: 'The Burger Club', class: 'logo-burgerclub' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/dominos.png', alt: "Domino's", class: 'logo-dominos' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/costacoffee.png', alt: 'Costa Coffee', class: 'logo-costacoffee' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/appolohospital.png', alt: 'Apollo Hospital', class: 'logo-apollo' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/maxhospital.png', alt: 'Max Hospital', class: 'logo-max' },
+  { src: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/barbecue.png', alt: 'Barbecue', class: 'logo-barbecue' },
+];
+
+// Calculate animation duration dynamically
+const totalWidth = logos.length * 160;
+const speed = 50; // Pixels per second
+const duration = totalWidth / speed;
+</script>
+
 <style scoped>
-/* Partner Logos */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: scroll linear infinite;
+}
+
+.marquee-item {
+  flex: 0 0 auto;
+  margin-right: 70px;
+}
+
 .partner-logo {
-  height: 80px;
-  max-width: 140px;
+  height: 170px;
+  max-width: 150px;
   object-fit: contain;
   transition: transform 0.3s ease-in-out;
 }
@@ -50,20 +89,12 @@
   transform: scale(1.1);
 }
 
-/* Adjust text size */
-h2 {
-  font-size: 2.75rem; /* Increased heading size */
-}
-
-/* Mobile adjustments */
-@media (max-width: 900px) {
-  .partner-logo {
-    height: 100px;
-    max-width: 150%;
-    margin: 6px;
+@keyframes scroll {
+  from {
+    transform: translateX(0);
   }
-  h2 {
-    font-size: 2.25rem;
+  to {
+    transform: translateX(-50%);
   }
 }
 </style>

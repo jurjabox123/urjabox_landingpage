@@ -3,14 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "build": "node --max-old-space-size=8192 ./node_modules/.bin/nuxt build",
+    "dev": "node --max-old-space-size=8192 ./node_modules/.bin/nuxt dev",
+    "generate": "node --max-old-space-size=8192 ./node_modules/.bin/nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.1.1",
+    "@nuxt/icon": "^1.11.0",
     "@nuxt/image": "^1.9.0",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/icon": "^3.0.0-beta.16",
@@ -19,8 +20,10 @@
     "nuxt": "^3.15.4",
     "nuxt-swiper": "^2.0.0",
     "swipe": "^1.7.7",
-    "swiper": "^11.2.4",
+    "swiper": "^11.2.6",
     "vue": "latest",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vue3-carousel": "^0.15.0",
+    "vue3-smooth-scroll": "^0.8.1"
   }
 }

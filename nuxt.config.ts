@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     },
   },
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   googleFonts: {
     families: {
@@ -40,5 +40,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
     'nuxt-swiper',
+    '@nuxt/icon',
   ],
 });

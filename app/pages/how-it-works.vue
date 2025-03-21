@@ -33,9 +33,9 @@ import charge from '@/assets/images/charge.png';
 import ret from '@/assets/images/return.png';
 
 const steps = [
-  { label: "SCAN", image: scan },
-  { label: "PAY", image: pay },
-  { label: "CHARGE", image: charge },
-  { label: "RETURN", image: ret },
+  { label: "SCAN", image: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/scan.png' },
+  { label: "PAY", image: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/pay.png' },
+  { label: "CHARGE", image: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/charge.png' },
+  { label: "RETURN", image: 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/return.png' },
 ];
 </script>

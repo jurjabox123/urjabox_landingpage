@@ -1,5 +1,6 @@
 <script setup>
-import cabinetImage from '@/assets/images/Maskgroup.png';
+// No need to import local image now
+const cabinetImage = 'https://imagelandingpage.s3.ap-south-1.amazonaws.com/images/Maskgroup.png';
 </script>
 
 <template>
@@ -26,13 +27,11 @@ import cabinetImage from '@/assets/images/Maskgroup.png';
 </template>
 
 <style scoped>
-/* Ensures the background image covers the section */
 .bg-cover {
   background-size: cover;
   background-position: center;
 }
 
-/* Custom media query for increasing height on larger screens */
 @media (min-width: 768px) {
   .custom-md-height {
     height: 780px !important;
